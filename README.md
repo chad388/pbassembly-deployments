@@ -66,8 +66,8 @@ $ cd Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip
 $ mkdir CCS_Data
 $ cd CCS_Data
 $ mkdir CCS_FASTA CCS_FASTQ
-$ cp CCS.fasta CCS_FASTA/
-$ cp CCS.fastq CCS_FASTQ/
+$ cp CCS.Q20.fasta CCS_FASTA/
+$ cp CCS.Q20.fastq CCS_FASTQ/
 ```
 
 **Split up CCS.fasta files into ~400 MB chunks:**
@@ -92,19 +92,84 @@ $ more CCS.fasta.fofn
 /gscmnt/gc2758/analysis/reference_grant/Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/CCS_Data/CCS_FASTA/m64043_200413_165107.Q20_5.fasta
 /gscmnt/gc2758/analysis/reference_grant/Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/CCS_Data/CCS_FASTA/m64043_200414_165107.Q20_6.fasta
 ```
-
-
 **Setup falcon (fc_run.cfg) and falcon-unzip HiFi (fc_unzip_HiFi.cfg) configuration files in the assembly directory and modify to work on your system:**
 
 You can obtain configuration files from the Pacific Biosciences github page: https://github.com/PacificBiosciences/pb-assembly/tree/master/cfgs
 The configuration files need to be modified to work on your specific cluster configuration: LSF, SGE, PBS, etc.
 
+We modified the configuration files to run on the MGI LSF cluster. We have modified the NPROC, MB, and njobs settings below for each stage based upon the results of testing on our cluster.
 
-Prepare data for assembly
-PacBio HiFi data is available in CCS.bam, CCS.fasta, and CCS.fastq formats. By default, the data is filtered to only include reads with a quality value of Q20 or greater.
-Q20 equates to allowing 1 error per 100 basepairs or 99% base accuracy. For pb-assembly we need the data in both CCS.fasta and CCS.fastq formats. 
-
-**Prepare read data directories**
+Example fc_run.cfg used for Human HiFi/CCS Assemblies:
 ```
+$ cd Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/
+$ vi fc_run.cfg
+[General]
+input_fofn=CCS.fasta.fofn
+input_type=preads
+pa_DBdust_option=
+pa_fasta_filter_option=streamed-median
+target=assembly
+skip_checks=False
+LA4Falcon_preload=false
 
+#### Data Partitioning
+pa_DBsplit_option=-x500 -s400
+ovlp_DBsplit_option=-s400
+
+#### Repeat Masking
+pa_HPCTANmask_option=
+#no-op repmask param set
+pa_REPmask_code=0,300;0,300;0,300
+
+####Pre-assembly
+length_cutoff=5000
+pa_HPCdaligner_option=-v -B128 -M24
+pa_daligner_option= -k18 -e0.75 -l1200 -h256 -w8 -s100
+falcon_sense_option=--output-multi --min-idt 0.70 --min-cov 4 --max-n-read 200
+falcon_sense_greedy=False
+
+####Pread overlapping
+ovlp_HPCdaligner_option=-v -B128 -M24
+ovlp_daligner_option=-k24 -e.92 -l1800 -h600 -s100
+
+####Final Assembly
+length_cutoff_pr=5000
+overlap_filtering_setting=--max-diff 100 --max-cov 100 --min-cov 2 --ignore-indels
+fc_ovlp_to_graph_option=
+
+[job.defaults]
+job_type=lsf
+#pwatcher_type=blocking
+pwatcher_type=blocking
+JOB_QUEUE=pacbio-sequel
+MB=40000
+NPROC=6
+njobs=100
+submit = bsub -q ${JOB_QUEUE} -J ${JOB_NAME} -M ${MB}000 -o ${JOB_STDOUT} -e ${JOB_STDERR} -K -R 'rusage[mem=${MB}]' -n ${NPROC} -a 'docker(halllab/pbassembly:0.0.6)' bash ${JOB_SCRIPT}
+
+[job.step.da]
+NPROC=4
+MB=32768
+njobs=100
+[job.step.la]
+NPROC=4
+MB=32768
+njobs=100
+[job.step.cns]
+NPROC=8
+MB=65536
+njobs=100
+[job.step.pda]
+NPROC=4
+MB=32768
+njobs=100
+[job.step.pla]
+NPROC=4
+MB=32768
+njobs=100
+[job.step.asm]
+NPROC=16
+MB=210000
+njobs=1
+```
 
