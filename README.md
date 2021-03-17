@@ -52,7 +52,16 @@ $ conda activate pb-assembly-0.0.8
 # Setting Up And Launching a PB-Assembly
 These are the steps that are used to launch pb-assembly on the MGI compute0 platform
 
-**Prepare the assembly directory**
+**Create an assembly directory**
+
+```
+$ mkdir Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip
+```
+
+**Setup falcon (fc_run.cfg) and falcon-unzip (fc_unzip_HiFi.cfg) configuration files.**
+
+You can obtain configuration files from the Pacific Biosciences github page: https://github.com/PacificBiosciences/pb-assembly/tree/master/cfgs
+
 
 
 Prepare data for assembly
