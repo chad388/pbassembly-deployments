@@ -23,7 +23,7 @@ pb-assembly-0.0.6        /gscmnt/gc2134/finishing/pb-assembly/.conda/envs/pb-ass
 base                  *  /opt/conda
 
 (base) ctomlins@blade18-1-16:/gscuser/ctomlins$ conda activate pb-assembly-0.0.6
-(pb-assembly-0.0.6) ctomlins@blade18-1-16:/gscuser/ebelter$ 
+(pb-assembly-0.0.6) ctomlins@blade18-1-16:/gscuser/ctomlins$ 
 ```
 **Launch jobs to LSF. Here the environment is needed to be preserved, do not include the LSF_DOCKER_PRESERVE_ENVIRONMENT=false environment variable. Below is an example of running falcon unzip.**
 ```
