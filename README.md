@@ -49,6 +49,7 @@ $ HOME=/gscmnt/gc2134/finishing/pb-assembly; export HOME
 $ conda create -p $HOME/.conda/envs/pb-assembly-0.0.8 -c bioconda pb-assembly=0.0.8 python=3.7
 $ conda activate pb-assembly-0.0.8
 ```
+# Prepare data for assembly
 
 
 
