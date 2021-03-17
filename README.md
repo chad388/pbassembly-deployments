@@ -16,7 +16,7 @@ $ LSF_DOCKER_PRESERVE_ENVIRONMENT=false bsub -q docker-interactive -Is -a 'docke
 ```
 **Activate the pb-assembly environment. The available environments can be listed, and the default is "base," as seen in the command line.**
 ```
-(base) ctomlins@blade18-1-16:/gscuser/ebelter$ conda info --env
+(base) ctomlins@blade18-1-16:/gscuser/ctomlins$ conda info --env
 # conda environments:
 #
 pb-assembly-0.0.6        /gscmnt/gc2134/finishing/pb-assembly/.conda/envs/pb-assembly-0.0.6
@@ -27,7 +27,7 @@ base                  *  /opt/conda
 ```
 **Launch jobs to LSF. Here the environment is needed to be preserved, do not include the LSF_DOCKER_PRESERVE_ENVIRONMENT=false environment variable. Below is an example of running falcon unzip.**
 ```
-(pb-assembly-0.0.6) ctomlins@blade18-1-16:/gscuser/ebelter$ bsub -q research-hpc -a 'docker(halllab/pbassembly:0.0.6)' fc_unzip.py fcunzip.cfg
+(pb-assembly-0.0.6) ctomlins@blade18-1-16:/gscuser/ctomlins$ bsub -q research-hpc -a 'docker(halllab/pbassembly:0.0.6)' fc_unzip.py fcunzip.cfg
 
 ```
 # Building PB Assembly for MGI
