@@ -49,11 +49,17 @@ $ HOME=/gscmnt/gc2134/finishing/pb-assembly; export HOME
 $ conda create -p $HOME/.conda/envs/pb-assembly-0.0.8 -c bioconda pb-assembly=0.0.8 python=3.7
 $ conda activate pb-assembly-0.0.8
 ```
-# Prepare data for assembly
+# Setting Up And Launching a PB-Assembly
+These are the steps that are used to launch pb-assembly on the MGI compute0 platform
+
+**Prepare the assembly directory**
+
+
+Prepare data for assembly
 PacBio HiFi data is available in CCS.bam, CCS.fasta, and CCS.fastq formats. By default, the data is filtered to only include reads with a quality value of Q20 or greater.
-Q20 equates to allowing 1 error per 100 basepairs or 99% base accuracy.
+Q20 equates to allowing 1 error per 100 basepairs or 99% base accuracy. For pb-assembly we need the data in both CCS.fasta and CCS.fastq formats. 
 
-For pb-assembly we need the data in both CCS.fasta and CCS.fastq formats. 
-
+**Prepare read data directories**
+```
 
 
