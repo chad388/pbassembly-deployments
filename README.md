@@ -27,7 +27,7 @@ base                  *  /opt/conda
 ```
 **Launch jobs to LSF. Here the environment is needed to be preserved, do not include the LSF_DOCKER_PRESERVE_ENVIRONMENT=false environment variable. Below is an example of running falcon unzip.**
 ```
-(pb-assembly-0.0.6) ctomlins@blade18-1-16:/gscuser/ctomlins$ bsub -q research-hpc -a 'docker(halllab/pbassembly:0.0.6)' fc_unzip.py fcunzip.cfg
+(pb-assembly-0.0.6) ctomlins@blade18-1-16:/gscuser/ctomlins$ bsub -q research-hpc -a 'docker(halllab/pbassembly:0.0.6)' fc_unzip.py fc_unzip.cfg
 
 ```
 # Building PB Assembly for MGI
@@ -58,10 +58,26 @@ These are the steps that are used to launch pb-assembly on the MGI compute0 plat
 $ mkdir Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip
 ```
 
-**Setup falcon (fc_run.cfg) and falcon-unzip (fc_unzip_HiFi.cfg) configuration files.**
+**Prepare read data directories and copy in CCS.fasta and CCS.fastq files**
+PacBio HiFi data is available in CCS.bam, CCS.fasta, and CCS.fastq formats. By default, the data is filtered to only include reads with a quality value of Q20 or greater.
+Q20 equates to allowing 1 error per 100 basepairs or 99% base accuracy. For pb-assembly we need the data in both CCS.fasta and CCS.fastq formats.
+```
+$ cd Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip
+$ mkdir CCS_Data
+$ cd CCS_Data
+$ mkdir CCS_FASTA CCS_FASTQ
+$ cp CCS.fasta CCS_FASTA/
+$ cp CCS.fastq CCS_FASTQ/
+```
+
+**Split up CCS.fasta files into ~400 MB chunks**
+The assembly building step of pb-assembly requires CCS.fasta as input. The initial pre-assembly stage of pb-assembly is parallelized. You can distribute jobs across multiple cluster nodes by splitting up the CCS.fasta file into multiple chunks. Pacific Biosciences suggests using ~400 MB chunks. We use an in-house developed script to split the CCS.fasta into 
+
+
+**Setup falcon (fc_run.cfg) and falcon-unzip HiFi (fc_unzip_HiFi.cfg) configuration files and modify to work on your system.**
 
 You can obtain configuration files from the Pacific Biosciences github page: https://github.com/PacificBiosciences/pb-assembly/tree/master/cfgs
-
+The configuration files need to be modified to work on your specific cluster configuration: LSF, SGE, PBS, etc.
 
 
 Prepare data for assembly
