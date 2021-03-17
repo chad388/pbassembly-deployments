@@ -70,7 +70,7 @@ $ cp CCS.fasta CCS_FASTA/
 $ cp CCS.fastq CCS_FASTQ/
 ```
 
-**Split up CCS.fasta files into ~400 MB chunks**
+**Split up CCS.fasta files into ~400 MB chunks:**
 The assembly building step of pb-assembly requires CCS.fasta as input. The initial pre-assembly stage of pb-assembly is parallelized. You can distribute jobs across multiple cluster nodes by splitting up the CCS.fasta file into multiple chunks. Pacific Biosciences suggests using ~400 MB chunks. We use an in-house developed script to split the CCS.fasta into 
 
 
