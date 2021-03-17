@@ -236,4 +236,6 @@ CCS_Data/
 CCS.fasta.fofn
 fc_run.cfg
 fc_unzip_HiFi.cfg
+
+$ bsub -oo pb_run.log -R "rusage[mem=20000] span[hosts=1]" -q research-hpc -a 'docker(halllab/pbassembly:0.0.6)' fc_unzip.py fc_unzip.cfg
 ```
