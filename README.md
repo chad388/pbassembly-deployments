@@ -206,8 +206,22 @@ MB=210000
 NPROC=4
 ```
 **6. Setup enviroment in terminal for running pb-assembly**
-This involves interactively logging into docker container that was setup for pb-assembly
+Open a terminal on your computer
+ssh into a virtual-workstation on compute0
+Pulldown the pbassembly:0.0.6 docker in an interactive shell 
 
 ```
 $ ssh -Y virtual-workstation3.gsc.wustl.edu
-$ 
+$ LSF_DOCKER_PRESERVE_ENVIRONMENT=false bsub -q docker-interactive -Is -a 'docker(halllab/pbassembly:0.0.6)' /bin/bash
+```
+Use conda to select the version of pb-assembly that you want to use. 
+You can verify that you have the correct version selected by checking one of the executables.
+Below I am verifying the path to the fc_run.py script.
+
+```
+(base) ctomlins@blade18-1-15:/gscmnt/gc2758/analysis/reference_grant/Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip$ conda activate pb-assembly-0.0.6
+(pb-assembly-0.0.6) ctomlins@blade18-1-15:/gscmnt/gc2758/analysis/reference_grant/Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip$ which fc_run.py
+/gscmnt/gc2134/finishing/pb-assembly/.conda/envs/pb-assembly-0.0.6/bin/fc_run.py
+```
+
+**7. Launch pb-assembly fc_run.py step**
