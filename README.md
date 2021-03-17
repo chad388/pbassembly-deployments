@@ -225,3 +225,15 @@ Below I am verifying the path to the fc_run.py script.
 ```
 
 **7. Launch pb-assembly fc_run.py step**
+Use the terminal that you setup in the preceeding step.
+Launch the job from the assembly directory
+
+```
+$ cd Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/
+
+$ ls -lrt | awk '{print $9}'
+CCS_Data/
+CCS.fasta.fofn
+fc_run.cfg
+fc_unzip_HiFi.cfg
+```
