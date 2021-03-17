@@ -205,7 +205,7 @@ njobs=1
 MB=210000
 NPROC=4
 ```
-**6. Setup enviroment in terminal for running pb-assembly**
+**6. Setup enviroment in terminal for running pb-assembly:**
 Open a terminal on your computer
 ssh into a virtual-workstation on compute0
 Pulldown the pbassembly:0.0.6 docker in an interactive shell 
@@ -224,7 +224,7 @@ Below I am verifying the path to the fc_run.py script.
 /gscmnt/gc2134/finishing/pb-assembly/.conda/envs/pb-assembly-0.0.6/bin/fc_run.py
 ```
 
-**7. Launch pb-assembly fc_run.py step**
+**7. Launch pb-assembly fc_run.py step:**
 Use the terminal that you setup in the preceeding step.
 Launch the job from the assembly directory
 
