@@ -40,8 +40,8 @@ $ mkdir -p "${HOME}"
 $ cd "${HOME}"
 $ conda init bash
 $ source /etc/profile
-$ conda create -c bioconda -n pb-assembly-0.0.6 pb-assembly=0.0.6 python=3.7.3
-$ conda activate pb-assembly-0.0.6
+$ conda create -c bioconda -n pb-assembly-0.0.8 pb-assembly=0.0.8 python=3.7.3
+$ conda activate pb-assembly-0.0.8
 ```
 # Add another version. If you use -n instead of -p the executables will be installed to /opt/conda/envs within the container.
 ```
