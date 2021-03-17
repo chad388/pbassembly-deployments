@@ -50,7 +50,10 @@ $ conda create -p $HOME/.conda/envs/pb-assembly-0.0.8 -c bioconda pb-assembly=0.
 $ conda activate pb-assembly-0.0.8
 ```
 # Prepare data for assembly
+PacBio HiFi data is available in CCS.bam, CCS.fasta, and CCS.fastq formats. By default, the data is filtered to only include reads with a quality value of Q20 or greater.
+Q20 equates to allowing 1 error per 100 basepairs or 99% base accuracy.
 
+For pb-assembly we need the data in both CCS.fasta and CCS.fastq formats. 
 
 
 
