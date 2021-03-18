@@ -252,7 +252,7 @@ The main output from this stage is a collapsed haplotype assembly of primary con
 **p_ctg.fasta**
 
 ```
-**HG02886 p_ctg.fasta Assembly Statistics**
+HG02886 p_ctg.fasta Assembly Statistics
   COUNT     1,670           
   LENGTH    2,903,399,911 bp     
   AVG       1,738,562 bp        
