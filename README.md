@@ -312,18 +312,6 @@ The main outputs from this stage are a set of polished primary contigs and assoc
   Contigs 0--2K: 0 ( 0 bp ) 0%
   ```
 
-**Can I mix Long Read and HiFi data?**
-
-Not currently. It's difficult to mix Long Read and HiFi data because they have different error profiles and read lengths.
-
-**Why are both FASTA and FASTQ required?**
-
-FALCON uses FASTA and FALCON-Unzip3 uses FASTQ for polishing. It's important that the FASTA and FASTQ files contain the same reads.
-
-**How long does FALCON-Unzip3 take to run with HiFi data?**
-
-FALCON assembly with HiFi data takes about half as many CPU hours as Long Reads for a human genome. P-read generation in FALCON is skipped, which is the most expensive step. We re-worked read tracking stages in FALCON-Unzip3 which also reduces runtimes.
-
 **What type of accuracy can I expect?**
 
 On human datasets (HG002) we've compared basepair accuracy for Long Read and HiFi assemblies and estimate about 3.5-fold fewer errors in HiFi assemblies. When we measure basepair accuracy in 100 kb windows by mapping contigs to a curated reference, we find that HiFi primary contigs and haplotigs have a median accuracy of 49-51 (Phred-scaled Q) where Q50 is 1 error per 100 kb. The phasing accuracy of unzipped HiFi haplotigs for human is > 99.9%.
