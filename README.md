@@ -106,7 +106,7 @@ The configuration files need to be modified to work on your specific cluster con
 
 We modified the configuration files to run on the MGI LSF cluster. We have modified the NPROC, MB, and njobs settings below for each stage based upon the results of testing on our cluster.
 
-Example fc_run.cfg used for Human HiFi/CCS Assemblies:
+**Example fc_run.cfg used for Human HiFi/CCS Assemblies:**
 ```
 $ cd Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/
 $ vi fc_run.cfg
@@ -179,7 +179,7 @@ NPROC=16
 MB=210000
 njobs=1
 ```
-Example fc_unzip_HiFi.cfg used for Human HiFi/CCS Assemblies:
+**Example fc_unzip_HiFi.cfg used for Human HiFi/CCS Assemblies:**
 ```
 $ cd Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/
 $ vi fc_unzip_HiFi.cfg
@@ -251,9 +251,9 @@ This stage of the assembly process took 44 hours or ~1.83 days when running on t
 The main output from this stage is a collapsed haplotype assembly of primary contigs in fasta format:
 **p_ctg.fasta**
 
+**HG02886 p_ctg.fasta Assembly Statistics**
 ```
-HG02886 p_ctg.fasta Assembly Statistics
-  COUNT     1,670           
+  #CONTIGS  1,670           
   LENGTH    2,903,399,911 bp     
   AVG       1,738,562 bp        
   N50       23,462,668 bp
@@ -283,9 +283,9 @@ The main outputs from this stage are a set of polished primary contigs and assoc
 
 **polished_p_ctgs.fasta** and **polished_h_ctgs.fasta**
 
+**HG02886 polished p_ctg.fasta Assembly Statistics**
 ```
-  HG02886 polished p_ctg.fasta Assembly Statistics
-  COUNT     1,579 bp
+  #CONTIGS     1,579 bp
   LENGTH    2,897,028,713 bp  
   AVG       1,834,723 bp
   N50       23,462,471 bp
@@ -298,6 +298,18 @@ The main outputs from this stage are a set of polished primary contigs and assoc
   Contigs 2K--5K: 0 ( 0 bp ) 0%
   Contigs 0--2K: 0 ( 0 bp ) 0%
   ```
-  
+  **HG02886 polished h_ctg.fasta Assembly Statistics**
   ```
-  
+  #CONTIGS  14,822          
+  LENGTH    2,544,595,270 bp     
+  AVG       171,676 bp         
+  N50       374,540 bp
+  LARGEST   2,445,917 bp        
+  Contigs > 1M: 179 ( 231,228,212 bp ) 9.1%
+  Contigs 250K--1M: 3198 ( 1,458,964,536 bp ) 57.3%
+  Contigs 100K--250K: 2990 ( 490,946,966 bp ) 19.3%
+  Contigs 10K--100K: 8455 ( 363,455,556 bp ) 14.3%
+  Contigs 5K--10K: 0 ( 0 bp ) 0%
+  Contigs 2K--5K: 0 ( 0 bp ) 0%
+  Contigs 0--2K: 0 ( 0 bp ) 0%
+  ```
