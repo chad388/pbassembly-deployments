@@ -280,6 +280,7 @@ $ bsub -oo pb_unzip.log -R "rusage[mem=20000] span[hosts=1]" -q research-hpc -a 
 This stage of the assembly process took just 121 hours or ~5.05 days to run from start to finish.
 
 The main outputs from this stage are a set of polished primary contigs and associated haplotigs in fasta format:
+
 **polished_p_ctgs.fasta**
 
 **polished_h_ctgs.fasta**
