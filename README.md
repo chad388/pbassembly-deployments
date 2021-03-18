@@ -256,13 +256,13 @@ The main output from this stage is a collapsed haplotype assembly of contigs in 
   AVG       1,738,562 bp        
   N50       23,462,668 bp
   LARGEST   89,926,393 bp       
-  Contigs > 1M: 226 ( 2,737,297,469 bp )
-  Contigs 250K--1M: 165 ( 79,850,161 bp )
-  Contigs 100K--250K: 289 ( 44,227,007 bp )
-  Contigs 10K--100K: 990 ( 42,025,274 bp )
-  Contigs 5K--10K: 0 ( 0 bp )
-  Contigs 2K--5K: 0 ( 0 bp )
-  Contigs 0--2K: 0 ( 0 bp )
+  Contigs > 1M: 226 ( 2,737,297,469 bp ) 94.3%
+  Contigs 250K--1M: 165 ( 79,850,161 bp ) 2.8%
+  Contigs 100K--250K: 289 ( 44,227,007 bp ) 1.5%
+  Contigs 10K--100K: 990 ( 42,025,274 bp ) 1.4%
+  Contigs 5K--10K: 0 ( 0 bp ) 0%
+  Contigs 2K--5K: 0 ( 0 bp ) 0%
+  Contigs 0--2K: 0 ( 0 bp ) 0%
   ```
   
-**N50 Contig Length:** Calculated by ordering every contig from longest to shortest. Then, starting from the longest contig, the lengths of each contig are summed until this      running sum total is equivalent to 1/2 of the total length of all contigs in the assembly. The length of the shortest contig in the list of contigs that were summed together, is the N50 contig length. It is a measure of contiguity and it is one means of comparing assemblies two different assemblies of a similar size.
+**N50 Contig Length:** Calculated by ordering every contig from longest to shortest. Then, starting from the longest contig, the lengths of each contig are summed until this      running sum total is equivalent to 1/2 of the total length of all contigs in the assembly. The length of the shortest contig in the list of contigs that were summed together, is the N50 contig length. It is a measure of contiguity and it is one means of comparing two different assemblies of a similar size.
