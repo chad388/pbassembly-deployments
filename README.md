@@ -75,31 +75,14 @@ This translates into total input coverage ranging between ~40X-50X.
 For the sample that this example is based upon, Gambian (HG02886), the total CCS Q20 yield is 137.4 Gbps or 45.8X coverage
 
 
-
-
-**3. Split up CCS.fasta files into ~400 MB chunks:**
-The assembly building step of pb-assembly requires CCS.fasta as input. The initial assembly stage of pb-assembly is parallelized. You can distribute jobs across multiple cluster nodes by splitting up the CCS.fasta file into multiple chunks. We use an in-house developed script to split the CCS.fasta into ~400 MB chunks, which is the size suggested by Pacific Biosciences.
-
-```
-$ cd Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/CCS_FASTA/
-$ split_fasta.pl CCS.fasta 
-```
-Output is CCS_1.fasta, CCS_2.fasta, CCS_3.fasta.......
-
-**4. Prepare a CCS.fasta.fofn in the assembly directory:**
-Fofn stands for file-of-file-names. In this instance, it is a text file containing the full path to each of the CCS fasta chunk files that were created during the preceeding step.
+**3. Prepare a CCS.fasta.fofn in the assembly directory:**
+Fofn stands for file-of-file-names. In this instance, it is a text file containing the full path to each of the CCS fasta chunk files that were created during the preceeding step. This fofn file name will be specified within the configuration file in the next step.
 ```
 $ cd Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/
 $ more CCS.fasta.fofn
-/gscmnt/gc2758/analysis/reference_grant/Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/CCS_Data/CCS_FASTA/m64043_200414_165107.Q20_0.fasta
-/gscmnt/gc2758/analysis/reference_grant/Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/CCS_Data/CCS_FASTA/m64043_200414_165107.Q20_1.fasta
-/gscmnt/gc2758/analysis/reference_grant/Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/CCS_Data/CCS_FASTA/m64043_200414_165107.Q20_2.fasta
-/gscmnt/gc2758/analysis/reference_grant/Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/CCS_Data/CCS_FASTA/m64043_200414_165107.Q20_3.fasta
-/gscmnt/gc2758/analysis/reference_grant/Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/CCS_Data/CCS_FASTA/m64043_200413_165107.Q20_4.fasta
-/gscmnt/gc2758/analysis/reference_grant/Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/CCS_Data/CCS_FASTA/m64043_200413_165107.Q20_5.fasta
-/gscmnt/gc2758/analysis/reference_grant/Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/CCS_Data/CCS_FASTA/m64043_200414_165107.Q20_6.fasta
+/gscmnt/gc2758/analysis/reference_grant/Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/CCS_Data/CCS_FASTA/CCS.Q20.fasta
 ```
-**5. Setup falcon (fc_run.cfg) and falcon-unzip HiFi (fc_unzip_HiFi.cfg) configuration files in the assembly directory and modify to work on your system:**
+**4. Setup falcon (fc_run.cfg) and falcon-unzip HiFi (fc_unzip_HiFi.cfg) configuration files in the assembly directory and modify to work on your system:**
 
 You can obtain configuration files from the Pacific Biosciences github page: https://github.com/PacificBiosciences/pb-assembly/tree/master/cfgs
 The configuration files need to be modified to work on your specific cluster configuration: LSF, SGE, PBS, etc.
@@ -212,7 +195,7 @@ njobs=1
 MB=210000
 NPROC=4
 ```
-**6. Setup enviroment in terminal for running pb-assembly:**
+**5. Setup enviroment in terminal for running pb-assembly:**
 Open a terminal on your computer
 ssh into a virtual-workstation on compute0
 Pulldown the pbassembly:0.0.6 docker in an interactive shell 
@@ -231,7 +214,7 @@ Below I am verifying the path to the fc_run.py script.
 /gscmnt/gc2134/finishing/pb-assembly/.conda/envs/pb-assembly-0.0.6/bin/fc_run.py
 ```
 
-**7. Launch pb-assembly fc_run.py step:**
+**6. Launch pb-assembly fc_run.py step:**
 Use the terminal that you setup in the preceeding step.
 Launch the job from the assembly directory.
 
