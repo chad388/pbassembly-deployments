@@ -282,3 +282,22 @@ This stage of the assembly process took just 121 hours or ~5.05 days to run from
 The main outputs from this stage are a set of polished primary contigs and associated haplotigs in fasta format:
 
 **polished_p_ctgs.fasta** and **polished_h_ctgs.fasta**
+
+```
+  HG02886 polished p_ctg.fasta Assembly Statistics
+  COUNT     1,579 bp
+  LENGTH    2,897,028,713 bp  
+  AVG       1,834,723 bp
+  N50       23,462,471 bp
+  LARGEST   89,891,276 bp
+  Contigs > 1M: 224 ( 2,732,859,679 bp ) 94.3%
+  Contigs 250K--1M: 165 ( 80,555,133 bp ) 2.8%
+  Contigs 100K--250K: 288 ( 44,373,439 bp ) 1.5%
+  Contigs 10K--100K: 902 ( 39,240,462 bp ) 1.4%
+  Contigs 5K--10K: 0 ( 0 bp ) 0%
+  Contigs 2K--5K: 0 ( 0 bp ) 0%
+  Contigs 0--2K: 0 ( 0 bp ) 0%
+  ```
+  
+  ```
+  
