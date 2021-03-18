@@ -249,8 +249,8 @@ $ bsub -oo pb_run.log -R "rusage[mem=20000] span[hosts=1]" -q research-hpc -a 'd
 This stage of the assembly process took 1 day 20 hours when running on the data for sample HG02886.
 
 The main output from this stage is a collapsed haplotype assembly of contigs in fasta format named p_ctg.fasta (primary contigs)
-
-  **HG02886 p_ctg.fasta Assembly Statistics**
+```
+**HG02886 p_ctg.fasta Assembly Statistics**
   COUNT     1,670           
   LENGTH    2,903,399,911 bp     
   AVG       1,738,562 bp        
@@ -263,5 +263,6 @@ The main output from this stage is a collapsed haplotype assembly of contigs in 
   Contigs 5K--10K: 0 ( 0 bp )
   Contigs 2K--5K: 0 ( 0 bp )
   Contigs 0--2K: 0 ( 0 bp )
+  ```
   
 **N50 Contig Length:** Calculated by ordering every contig from longest to shortest. Then, starting from the longest contig, the lengths of each contig are summed until this      running sum total is equivalent to 1/2 of the total length of all contigs in the assembly. The length of the shortest contig in the list of contigs that were summed together, is the N50 contig length. It is a measure of contiguity and it is one means of comparing assemblies two different assemblies of a similar size.
