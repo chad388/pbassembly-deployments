@@ -283,7 +283,7 @@ The main outputs from this stage are a set of polished primary contigs and assoc
 
 **HG02886 polished p_ctg.fasta Assembly Statistics**
 ```
-  #CONTIGS     1,579 bp
+  #CONTIGS     1,579 
   LENGTH    2,897,028,713 bp  
   AVG       1,834,723 bp
   N50       23,462,471 bp
