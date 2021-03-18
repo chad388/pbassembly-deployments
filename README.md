@@ -246,7 +246,7 @@ fc_unzip_HiFi.cfg
 
 $ bsub -oo pb_run.log -R "rusage[mem=20000] span[hosts=1]" -q research-hpc -a 'docker(halllab/pbassembly:0.0.6)' fc_run fc_run.cfg
 ```
-This stage of the assembly process took 1 day 20 hours when running on the data for sample HG02886.
+This stage of the assembly process took 44 hours or ~1.83 days when running on the data for sample HG02886.
 
 The main output from this stage is a collapsed haplotype assembly of contigs in fasta format named p_ctg.fasta (primary contigs)
 ```
@@ -266,3 +266,13 @@ The main output from this stage is a collapsed haplotype assembly of contigs in 
   ```
   
 **N50 Contig Length:** Calculated by ordering every contig from longest to shortest. Then, starting from the longest contig, the lengths of each contig are summed until this      running sum total is equivalent to 1/2 of the total length of all contigs in the assembly. The length of the shortest contig in the list of contigs that were summed together, is the N50 contig length. It is a measure of contiguity and it is one means of comparing two different assemblies of a similar size.
+
+
+**8. Launch pb-assembly fc_unzip.py step**
+Follow the same procedure that was used in step 6 above to setup your environment for running pb-assembly.
+```
+$ cd Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/
+$ bsub -oo pb_unzip.log -R "rusage[mem=20000] span[hosts=1]" -q research-hpc -a 'docker(halllab/pbassembly:0.0.6)' fc_unzip.py --target=ccs fc_unzip_HiFi.cfg
+```
+
+This stage of the assembly process took just 121 hours or ~5.05 days to run from start to finish
