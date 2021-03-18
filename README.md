@@ -78,7 +78,7 @@ For the sample that this example is based upon, Gambian (HG02886), the total CCS
 
 
 **3. Split up CCS.fasta files into ~400 MB chunks:**
-The assembly building step of pb-assembly requires CCS.fasta as input. The initial pre-assembly stage of pb-assembly is parallelized. You can distribute jobs across multiple cluster nodes by splitting up the CCS.fasta file into multiple chunks. We use an in-house developed script to split the CCS.fasta into ~400 MB chunks, which is the approximate size suggested by Pacific Biosciences.
+The assembly building step of pb-assembly requires CCS.fasta as input. The initial assembly stage of pb-assembly is parallelized. You can distribute jobs across multiple cluster nodes by splitting up the CCS.fasta file into multiple chunks. We use an in-house developed script to split the CCS.fasta into ~400 MB chunks, which is the size suggested by Pacific Biosciences.
 
 ```
 $ cd Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/CCS_FASTA/
