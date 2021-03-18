@@ -248,7 +248,9 @@ $ bsub -oo pb_run.log -R "rusage[mem=20000] span[hosts=1]" -q research-hpc -a 'd
 ```
 This stage of the assembly process took 44 hours or ~1.83 days when running on the data for sample HG02886.
 
-The main output from this stage is a collapsed haplotype assembly of contigs in fasta format named p_ctg.fasta (primary contigs)
+The main output from this stage is a collapsed haplotype assembly of primary contigs in fasta format:
+**p_ctg.fasta**
+
 ```
 **HG02886 p_ctg.fasta Assembly Statistics**
   COUNT     1,670           
@@ -275,4 +277,8 @@ $ cd Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/
 $ bsub -oo pb_unzip.log -R "rusage[mem=20000] span[hosts=1]" -q research-hpc -a 'docker(halllab/pbassembly:0.0.6)' fc_unzip.py --target=ccs fc_unzip_HiFi.cfg
 ```
 
-This stage of the assembly process took just 121 hours or ~5.05 days to run from start to finish
+This stage of the assembly process took just 121 hours or ~5.05 days to run from start to finish.
+
+The main outputs from this stage are a set of polished primary contigs and associated haplotigs in fasta format:
+**polished_p_ctgs.fasta**
+**polished_h_ctgs.fasta**
