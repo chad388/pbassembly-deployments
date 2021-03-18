@@ -69,6 +69,13 @@ $ mkdir CCS_FASTA CCS_FASTQ
 $ cp CCS.Q20.fasta CCS_FASTA/
 $ cp CCS.Q20.fastq CCS_FASTQ/
 ```
+For assembly of human samples, we typically generate 4 SMRT cells of data.
+The CCS Q20 yield per SMRT cell is ~30-40 Gbps.
+This translates into total input coverage ranging between ~40X-50X.
+For the sample that this example is based upon, Gambian (HG02886), the total CCS Q20 yield is 137.4 Gbps or 45.8X coverage
+
+
+
 
 **3. Split up CCS.fasta files into ~400 MB chunks:**
 The assembly building step of pb-assembly requires CCS.fasta as input. The initial pre-assembly stage of pb-assembly is parallelized. You can distribute jobs across multiple cluster nodes by splitting up the CCS.fasta file into multiple chunks. We use an in-house developed script to split the CCS.fasta into ~400 MB chunks, which is the approximate size suggested by Pacific Biosciences.
