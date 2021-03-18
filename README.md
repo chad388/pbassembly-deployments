@@ -281,5 +281,4 @@ This stage of the assembly process took just 121 hours or ~5.05 days to run from
 
 The main outputs from this stage are a set of polished primary contigs and associated haplotigs in fasta format:
 
-**polished_p_ctgs.fasta**
-**polished_h_ctgs.fasta**
+**polished_p_ctgs.fasta** and **polished_h_ctgs.fasta**
