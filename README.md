@@ -233,7 +233,7 @@ Below I am verifying the path to the fc_run.py script.
 
 **7. Launch pb-assembly fc_run.py step:**
 Use the terminal that you setup in the preceeding step.
-Launch the job from the assembly directory
+Launch the job from the assembly directory.
 
 ```
 $ cd Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/
@@ -244,5 +244,24 @@ CCS.fasta.fofn
 fc_run.cfg
 fc_unzip_HiFi.cfg
 
-$ bsub -oo pb_run.log -R "rusage[mem=20000] span[hosts=1]" -q research-hpc -a 'docker(halllab/pbassembly:0.0.6)' fc_unzip.py fc_unzip.cfg
+$ bsub -oo pb_run.log -R "rusage[mem=20000] span[hosts=1]" -q research-hpc -a 'docker(halllab/pbassembly:0.0.6)' fc_run fc_run.cfg
 ```
+This stage of the assembly process took 1 day 20 hours when running on the data for sample HG02886.
+
+The main output from this stage is a collapsed haplotype assembly of contigs in fasta format named p_ctg.fasta (primary contigs)
+
+  **HG02886 p_ctg.fasta Assembly Statistics**
+  COUNT     1,670           
+  LENGTH    2,903,399,911 bp     
+  AVG       1,738,562 bp        
+  N50       23,462,668 bp
+  LARGEST   89,926,393 bp       
+  Contigs > 1M: 226 ( 2,737,297,469 bp )
+  Contigs 250K--1M: 165 ( 79,850,161 bp )
+  Contigs 100K--250K: 289 ( 44,227,007 bp )
+  Contigs 10K--100K: 990 ( 42,025,274 bp )
+  Contigs 5K--10K: 0 ( 0 bp )
+  Contigs 2K--5K: 0 ( 0 bp )
+  Contigs 0--2K: 0 ( 0 bp )
+  
+**N50 Contig Length:** Calculated by ordering every contig from longest to shortest. Then, starting from the longest contig, the lengths of each contig are summed until this      running sum total is equivalent to 1/2 of the total length of all contigs in the assembly. The length of the shortest contig in the list of contigs that were summed together, is the N50 contig length. It is a measure of contiguity and it is one means of comparing assemblies two different assemblies of a similar size.
