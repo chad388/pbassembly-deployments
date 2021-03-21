@@ -58,17 +58,9 @@ These are the steps that are used to launch pb-assembly on the MGI compute0 plat
 $ mkdir Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip
 ```
 
-**2. Prepare read data directories and copy in CCS.fasta and CCS.fastq files:**
-PacBio HiFi data is available in CCS.bam, CCS.fasta, and CCS.fastq formats. By default, the data is filtered to only include reads with a quality value of Q20 or greater.
-Q20 equates to allowing 1 error per 100 basepairs or 99% base accuracy. For pb-assembly we need the data in both CCS.fasta and CCS.fastq formats.
-```
-$ cd Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip
-$ mkdir CCS_Data
-$ cd CCS_Data
-$ mkdir CCS_FASTA CCS_FASTQ
-$ cp CCS.Q20.fasta CCS_FASTA/
-$ cp CCS.Q20.fastq CCS_FASTQ/
-```
+**2. Gather the paths to the HiFi (CCS) data in both CCS.fasta and CCS.fastq format:**
+You will need these data paths when setting up the assembler configuration files.
+
 For assembly of human samples, we typically generate 4 SMRT cells of data.
 The CCS Q20 yield per SMRT cell is ~30-40 Gbps.
 This translates into total input coverage ranging between ~40X-50X.
@@ -76,7 +68,7 @@ For the sample that this example is based upon, Gambian (HG02886), the total CCS
 
 
 **3. Prepare a CCS.fasta.fofn in the assembly directory:**
-Fofn stands for file-of-file-names. In this instance, it is a text file containing the full path to each of the CCS fasta chunk files that were created during the preceeding step. This fofn file name will be specified within the configuration file in the next step.
+Fofn stands for file-of-file-names. In this instance, it is a text file containing the full path to the CCS.fasta file.
 ```
 $ cd Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/
 $ more CCS.fasta.fofn
@@ -131,7 +123,7 @@ fc_ovlp_to_graph_option=
 job_type=lsf
 #pwatcher_type=blocking
 pwatcher_type=blocking
-JOB_QUEUE=pacbio-sequel
+JOB_QUEUE=research-hpc
 MB=40000
 NPROC=6
 njobs=100
@@ -196,6 +188,7 @@ MB=210000
 NPROC=4
 ```
 **5. Setup enviroment in terminal for running pb-assembly:**
+
 Open a terminal on your computer
 ssh into a virtual-workstation on compute0
 Pulldown the pbassembly:0.0.6 docker in an interactive shell 
