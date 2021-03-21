@@ -189,9 +189,9 @@ NPROC=4
 ```
 **5. Setup enviroment in terminal for running pb-assembly:**
 
-Open a terminal on your computer
-ssh into a virtual-workstation on compute0
-Pulldown the pbassembly:0.0.6 docker in an interactive shell 
+Open a terminal on your computer.
+SSH into a virtual-workstation on compute0.
+Pulldown the pbassembly:0.0.6 docker in an interactive shell. 
 
 ```
 $ ssh -Y virtual-workstation3.gsc.wustl.edu
