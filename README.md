@@ -242,8 +242,6 @@ The main output from this stage is a collapsed haplotype assembly of primary con
   Contigs 2K--5K: 0 ( 0 bp ) 0%
   Contigs 0--2K: 0 ( 0 bp ) 0%
   ```
-  
-**N50 Contig Length:** Calculated by ordering every contig from longest to shortest. Then, starting from the longest contig, the lengths of each contig are summed until this      running sum total is equivalent to 1/2 of the total length of all contigs in the assembly. The length of the shortest contig in the list of contigs that were summed together, is the N50 contig length. It is a measure of contiguity and it is one means of comparing two different assemblies of a similar size.
 
 
 **8. Launch pb-assembly fc_unzip.py step**
