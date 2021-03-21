@@ -245,7 +245,7 @@ The main output from this stage is a collapsed haplotype assembly of primary con
 
 
 **8. Launch pb-assembly fc_unzip.py step**
-Follow the same procedure that was used in step 6 above to setup your environment for running pb-assembly.
+Follow the same procedure that was used in step 5 above to setup your environment for running pb-assembly.
 ```
 $ cd Gambian_HG02723_CCS_HiFi_PB_Assembly_Falcon_Unzip/
 $ bsub -oo pb_unzip.log -R "rusage[mem=20000] span[hosts=1]" -q research-hpc -a 'docker(halllab/pbassembly:0.0.6)' fc_unzip.py --target=ccs fc_unzip_HiFi.cfg
