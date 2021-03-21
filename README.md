@@ -64,7 +64,7 @@ You will need these data paths when setting up the assembler configuration files
 For assembly of human samples, we typically generate 4 SMRT cells of data.
 The CCS Q20 yield per SMRT cell is ~30-40 Gbps.
 This translates into total input coverage ranging between ~40X-50X.
-For the sample that this example is based upon, Gambian (HG02886), the total CCS Q20 yield is 137.4 Gbps or 45.8X coverage
+For the sample that this example is based upon, Gambian (HG02723), the total CCS Q20 yield is 137.4 Gbps or 45.8X coverage
 
 
 **3. Prepare a CCS.fasta.fofn in the assembly directory:**
