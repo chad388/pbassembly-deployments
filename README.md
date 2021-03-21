@@ -55,7 +55,7 @@ These are the steps that are used to launch pb-assembly on the MGI compute0 plat
 **1. Create an assembly directory**
 
 ```
-$ mkdir Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip
+$ mkdir Gambian_HG02723_CCS_HiFi_PB_Assembly_Falcon_Unzip
 ```
 
 **2. Gather the paths to the HiFi (CCS) data in both CCS.fasta and CCS.fastq format:**
@@ -70,9 +70,9 @@ For the sample that this example is based upon, Gambian (HG02886), the total CCS
 **3. Prepare a CCS.fasta.fofn in the assembly directory:**
 Fofn stands for file-of-file-names. In this instance, it is a text file containing the full path to the CCS.fasta file.
 ```
-$ cd Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/
+$ cd Gambian_HG02723_CCS_HiFi_PB_Assembly_Falcon_Unzip/
 $ more CCS.fasta.fofn
-/gscmnt/gc2758/analysis/reference_grant/Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/CCS_Data/CCS_FASTA/CCS.Q20.fasta
+/gscmnt/gc2758/analysis/reference_grant/Gambian_HG02723_CCS_HiFi_PB_Assembly_Falcon_Unzip/CCS_Data/CCS_FASTA/CCS.Q20.fasta
 ```
 **4. Setup falcon (fc_run.cfg) and falcon-unzip HiFi (fc_unzip_HiFi.cfg) configuration files in the assembly directory and modify to work on your system:**
 
@@ -83,7 +83,7 @@ We modified the configuration files to run on the MGI LSF cluster. We have modif
 
 **Example fc_run.cfg used for Human HiFi/CCS Assemblies:**
 ```
-$ cd Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/
+$ cd Gambian_HG02723_CCS_HiFi_PB_Assembly_Falcon_Unzip/
 $ vi fc_run.cfg
 [General]
 input_fofn=CCS.fasta.fofn
@@ -156,7 +156,7 @@ njobs=1
 ```
 **Example fc_unzip_HiFi.cfg used for Human HiFi/CCS Assemblies:**
 ```
-$ cd Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/
+$ cd Gambian_HG02723_CCS_HiFi_PB_Assembly_Falcon_Unzip/
 $ vi fc_unzip_HiFi.cfg
 [General]
 max_n_open_files = 20000
@@ -165,7 +165,7 @@ NPROC=4
 MB=50000
 
 [Unzip]
-fastq=/gscmnt/gc2758/analysis/reference_grant/Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/CCS_Data/CCS_FASTQ/CCS.Q20.fastq
+fastq=/gscmnt/gc2758/analysis/reference_grant/Gambian_HG02723_CCS_HiFi_PB_Assembly_Falcon_Unzip/CCS_Data/CCS_FASTQ/CCS.Q20.fastq
 input_fofn=CCS.fasta.fofn
 
 [job.defaults]
@@ -202,8 +202,8 @@ You can verify that you have the correct version selected by checking one of the
 Below I am verifying the path to the fc_run.py script.
 
 ```
-(base) ctomlins@blade18-1-15:/gscmnt/gc2758/analysis/reference_grant/Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip$ conda activate pb-assembly-0.0.6
-(pb-assembly-0.0.6) ctomlins@blade18-1-15:/gscmnt/gc2758/analysis/reference_grant/Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip$ which fc_run.py
+(base) ctomlins@blade18-1-15:/gscmnt/gc2758/analysis/reference_grant/Gambian_HG02723_CCS_HiFi_PB_Assembly_Falcon_Unzip$ conda activate pb-assembly-0.0.6
+(pb-assembly-0.0.6) ctomlins@blade18-1-15:/gscmnt/gc2758/analysis/reference_grant/Gambian_HG02723_CCS_HiFi_PB_Assembly_Falcon_Unzip$ which fc_run.py
 /gscmnt/gc2134/finishing/pb-assembly/.conda/envs/pb-assembly-0.0.6/bin/fc_run.py
 ```
 
@@ -212,7 +212,7 @@ Use the terminal that you setup in the preceeding step.
 Launch the job from the assembly directory.
 
 ```
-$ cd Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/
+$ cd Gambian_HG02723_CCS_HiFi_PB_Assembly_Falcon_Unzip/
 
 $ ls -lrt | awk '{print $9}'
 CCS_Data/
@@ -222,12 +222,12 @@ fc_unzip_HiFi.cfg
 
 $ bsub -oo pb_run.log -R "rusage[mem=20000] span[hosts=1]" -q research-hpc -a 'docker(halllab/pbassembly:0.0.6)' fc_run fc_run.cfg
 ```
-This stage of the assembly process took 44 hours or ~1.83 days when running on the data for sample HG02886.
+This stage of the assembly process took 44 hours or ~1.83 days when running on the data for sample HG02723.
 
 The main output from this stage is a collapsed haplotype assembly of primary contigs in fasta format:
 **p_ctg.fasta**
 
-**HG02886 p_ctg.fasta Assembly Statistics**
+**HG02723 p_ctg.fasta Assembly Statistics**
 ```
   #CONTIGS  1,670           
   LENGTH    2,903,399,911 bp     
@@ -247,15 +247,15 @@ The main output from this stage is a collapsed haplotype assembly of primary con
 **8. Launch pb-assembly fc_unzip.py step**
 Follow the same procedure that was used in step 6 above to setup your environment for running pb-assembly.
 ```
-$ cd Gambian_HG02886_CCS_HiFi_PB_Assembly_Falcon_Unzip/
+$ cd Gambian_HG02723_CCS_HiFi_PB_Assembly_Falcon_Unzip/
 $ bsub -oo pb_unzip.log -R "rusage[mem=20000] span[hosts=1]" -q research-hpc -a 'docker(halllab/pbassembly:0.0.6)' fc_unzip.py --target=ccs fc_unzip_HiFi.cfg
 ```
 
-This stage of the assembly process took just 121 hours or ~5.05 days to run from start to finish.
+This stage of the assembly process took 121 hours or ~5.05 days to run from start to finish.
 
 The main outputs from this stage are a set of polished primary contigs and associated haplotigs in fasta format:  **polished_p_ctgs.fasta & polished_h_ctgs.fasta**
 
-**HG02886 polished p_ctg.fasta Assembly Statistics**
+**HG02723 polished p_ctg.fasta Assembly Statistics**
 ```
   #CONTIGS  1,579 
   LENGTH    2,897,028,713 bp  
@@ -270,7 +270,7 @@ The main outputs from this stage are a set of polished primary contigs and assoc
   Contigs 2K--5K: 0 ( 0 bp ) 0%
   Contigs 0--2K: 0 ( 0 bp ) 0%
   ```
-  **HG02886 polished h_ctg.fasta Assembly Statistics**
+  **HG02723 polished h_ctg.fasta Assembly Statistics**
   ```
   #CONTIGS  14822          
   LENGTH    2544595270 bp     
@@ -286,6 +286,72 @@ The main outputs from this stage are a set of polished primary contigs and assoc
   Contigs 0--2K: 0 ( 0 bp ) 0%
   ```
 
-**What type of accuracy can I expect?**
-***(From Pacific Biosciences):***
-On human datasets (HG002) we've compared basepair accuracy for Long Read and HiFi assemblies and estimate about 3.5-fold fewer errors in HiFi assemblies. When we measure basepair accuracy in 100 kb windows by mapping contigs to a curated reference, we find that HiFi primary contigs and haplotigs have a median accuracy of 49-51 (Phred-scaled Q) where Q50 is 1 error per 100 Kb. The phasing accuracy of unzipped HiFi haplotigs for human is > 99.9%.
+**9. Launch pb-assembly fc_phase.py step**
+
+Setup Falcon-Phase config file
+```
+$ more fc_phase.cfg
+[General]
+#target=minced
+
+[job.defaults]
+NPROC=2
+njobs=200
+MB=40000
+pwatcher_type=blocking
+job_type=lsf
+JOB_QUEUE=ccdg
+submit = bsub -q ${JOB_QUEUE} -M 50000000 -J ${JOB_NAME} -o ${JOB_STDOUT} -e ${JOB_STDERR} -R 'rusage[mem=50000]' -n 6 -K -a 'docker(halllab/pbassembly:0.0.6)' bash ${JOB_SCRIPT}
+
+
+[Phase]
+cns_p_ctg_fasta = ./4-polish/polished_p_ctgs.fasta
+cns_h_ctg_fasta = ./4-polish/polished_h_ctgs.fasta
+reads_1=/gscmnt/gc2758/analysis/reference_grant/HiC_Data_Ed_Green_Lab/HG02723_Gambian/All_R1.fastq.gz
+reads_2=/gscmnt/gc2758/analysis/reference_grant/HiC_Data_Ed_Green_Lab/HG02723_Gambian/All_R2.fastq.gz
+min_aln_len=3000
+iterations=10000000
+enzyme="GATC,GAATC,GATTC,GAGTC,GACTC"
+output_format=pseudohap
+```
+
+Setup pb-assembly environment in terminal (Step 5 above) and launch command as LSF job:
+
+```
+$ bsub -oo pb_phase.log -R "rusage[mem=20000] span[hosts=1]" -q research-hpc -a 'docker(halllab/pbassembly:0.0.6)' fc_phase.py fc_phase.cfg
+```
+
+This stage took approximately 96 hours or 4 days to run from start to finish.
+
+The output from this stage are two sets of phased haplotigs in fasta format: **phased.0.fasta & phased.1.fasta**
+
+**HG02723 phased.0.fasta Assembly Statistics**
+```CONTIGS
+  COUNT     1,780           
+  LENGTH    2,889,791,364 bp
+  AVG       1,623,478 bp        
+  N50       20,622,770 bp
+  LARGEST   80,746,993 bp    
+  Contigs > 1M: 236 ( 2,725,408,095 bp )
+  Contigs 250K--1M: 163 ( 80,242,266 bp )
+  Contigs 100K--250K: 268 ( 41,399,963 bp )
+  Contigs 10K--100K: 1113 ( 42,741,040 bp )
+  Contigs 5K--10K: 0 ( 0 bp )
+  Contigs 2K--5K: 0 ( 0 bp )
+  Contigs 0--2K: 0 ( 0 bp )`
+```
+**HG02723 phased.1.fasta Assembly Statistics**
+```
+  #CONTIGS  1,780
+  LENGTH    2,889,791,364 bp
+  AVG       1,623,478 bp
+  N50       20,622,770 bp
+  LARGEST   80,746,993 bp
+  Contigs > 1M: 236 ( 2,725,408,095 bp )
+  Contigs 250K--1M: 163 ( 80,242,266 bp )
+  Contigs 100K--250K: 268 ( 41,399,963 bp )
+  Contigs 10K--100K: 1113 ( 42,741,040 bp )
+  Contigs 5K--10K: 0 ( 0 bp )
+  Contigs 2K--5K: 0 ( 0 bp )
+  Contigs 0--2K: 0 ( 0 bp )
+  ```
