@@ -229,16 +229,16 @@ The main output from this stage is a collapsed haplotype assembly of primary con
 
 **HG02723 p_ctg.fasta Assembly Statistics**
 ```
-  #CONTIGS  1,670           
-  LENGTH    2,903,399,911 bp     
-  AVG       1,738,562 bp        
-  N50       23,462,668 bp
-  LARGEST   89,926,393 bp       
-  Contigs > 1M: 226 ( 2,737,297,469 bp ) 94.3%
-  Contigs 250K--1M: 165 ( 79,850,161 bp ) 2.8%
-  Contigs 100K--250K: 289 ( 44,227,007 bp ) 1.5%
-  Contigs 10K--100K: 990 ( 42,025,274 bp ) 1.4%
-  Contigs 5K--10K: 0 ( 0 bp ) 0%
+ #CONTIGS   1,868           
+  LENGTH    2,893,463,624 bp     
+  AVG       1,548,963 bp       
+  N50       19,307,067 bp
+  LARGEST   80,703,395  bp      
+  Contigs > 1M: 236 ( 2,723,997,977 bp ) 94.1%
+  Contigs 250K--1M: 170 ( 83,143,418 bp ) 2.9%
+  Contigs 100K--250K: 272 ( 41,971,624 bp ) 1.5%
+  Contigs 10K--100K: 1189 ( 44,342,245 bp ) 1.5%
+  Contigs 5K--10K: 1 ( 8,360 bp ) 0.0003%
   Contigs 2K--5K: 0 ( 0 bp ) 0%
   Contigs 0--2K: 0 ( 0 bp ) 0%
   ```
@@ -257,31 +257,31 @@ The main outputs from this stage are a set of polished primary contigs and assoc
 
 **HG02723 polished p_ctg.fasta Assembly Statistics**
 ```
-  #CONTIGS  1,579 
-  LENGTH    2,897,028,713 bp  
-  AVG       1,834,723 bp
-  N50       23,462,471 bp
-  LARGEST   89,891,276 bp
-  Contigs > 1M: 224 ( 2,732,859,679 bp ) 94.3%
-  Contigs 250K--1M: 165 ( 80,555,133 bp ) 2.8%
-  Contigs 100K--250K: 288 ( 44,373,439 bp ) 1.5%
-  Contigs 10K--100K: 902 ( 39,240,462 bp ) 1.4%
+ #CONTIGS   1,738           
+  LENGTH    2,886,709,800 bp
+  AVG       1,660,937 bp        
+  N50       20,615,266 bp
+  LARGEST   80,725,402 bp       
+  Contigs > 1M: 236 ( 2,723,682,636 bp ) 94.4%
+  Contigs 250K--1M: 163 ( 80,254,051 bp ) 2.8%
+  Contigs 100K--250K: 264 ( 40,874,654 bp ) 1.4%
+  Contigs 10K--100K: 1075 ( 41,898,459 bp ) 1.5%
   Contigs 5K--10K: 0 ( 0 bp ) 0%
   Contigs 2K--5K: 0 ( 0 bp ) 0%
   Contigs 0--2K: 0 ( 0 bp ) 0%
   ```
   **HG02723 polished h_ctg.fasta Assembly Statistics**
   ```
-  #CONTIGS  14822          
-  LENGTH    2544595270 bp     
-  AVG       171676 bp         
-  N50       374540 bp
-  LARGEST   2445917 bp        
-  Contigs > 1M: 179 ( 231228212 bp ) 9.1%
-  Contigs 250K--1M: 3198 ( 1458964536 bp ) 57.3%
-  Contigs 100K--250K: 2990 ( 490946966 bp ) 19.3%
-  Contigs 10K--100K: 8455 ( 363455556 bp ) 14.3%
-  Contigs 5K--10K: 0 ( 0 bp ) 0%
+  #CONTIGS  16,176          
+  LENGTH    2,511,021,594 bp     
+  AVG       155,231 bp         
+  N50       333,721 bp
+  LARGEST   2,086,659 bp        
+  Contigs > 1M: 141 ( 170,229,548 bp ) 6.8%
+  Contigs 250K--1M: 3112 ( 1,384,195,888 bp ) 55.1%
+  Contigs 100K--250K: 3414 ( 560,922,333 bp ) 22.3%
+  Contigs 10K--100K: 9508 ( 395,663,969 bp ) 15.8%
+  Contigs 5K--10K: 1 ( 9,856 bp ) 0.0004%
   Contigs 2K--5K: 0 ( 0 bp ) 0%
   Contigs 0--2K: 0 ( 0 bp ) 0%
   ```
@@ -326,19 +326,19 @@ This stage took approximately 96 hours or 4 days to run from start to finish.
 The output from this stage are two sets of phased haplotigs in fasta format: **phased.0.fasta & phased.1.fasta**
 
 **HG02723 phased.0.fasta Assembly Statistics**
-```CONTIGS
-  COUNT     1,780           
-  LENGTH    2,889,791,364 bp
-  AVG       1,623,478 bp        
-  N50       20,622,770 bp
-  LARGEST   80,746,993 bp    
-  Contigs > 1M: 236 ( 2,725,408,095 bp )
-  Contigs 250K--1M: 163 ( 80,242,266 bp )
-  Contigs 100K--250K: 268 ( 41,399,963 bp )
-  Contigs 10K--100K: 1113 ( 42,741,040 bp )
-  Contigs 5K--10K: 0 ( 0 bp )
-  Contigs 2K--5K: 0 ( 0 bp )
-  Contigs 0--2K: 0 ( 0 bp )`
+```
+  #CONTIGS  1,780           
+  LENGTH    2,890,378,344 bp
+  AVG       1,623,808 bp        
+  N50       20,629,600 bp
+  LARGEST   80,753,658 bp       
+  Contigs > 1M: 236 ( 2,725,163,374 bp ) 94.3%
+  Contigs 250K--1M: 164 ( 80,715,540 bp ) 2.8%
+  Contigs 100K--250K: 269 ( 41,853,621 bp ) 1.4%
+  Contigs 10K--100K: 1111 ( 42,645,809 bp ) 1.5%
+  Contigs 5K--10K: 0 ( 0 bp ) 0%
+  Contigs 2K--5K: 0 ( 0 bp ) 0%
+  Contigs 0--2K: 0 ( 0 bp ) 0%
 ```
 **HG02723 phased.1.fasta Assembly Statistics**
 ```
@@ -347,11 +347,11 @@ The output from this stage are two sets of phased haplotigs in fasta format: **p
   AVG       1,623,478 bp
   N50       20,622,770 bp
   LARGEST   80,746,993 bp
-  Contigs > 1M: 236 ( 2,725,408,095 bp )
-  Contigs 250K--1M: 163 ( 80,242,266 bp )
-  Contigs 100K--250K: 268 ( 41,399,963 bp )
-  Contigs 10K--100K: 1113 ( 42,741,040 bp )
-  Contigs 5K--10K: 0 ( 0 bp )
-  Contigs 2K--5K: 0 ( 0 bp )
-  Contigs 0--2K: 0 ( 0 bp )
+  Contigs > 1M: 236 ( 2,725,408,095 bp ) 94.3%
+  Contigs 250K--1M: 163 ( 80,242,266 bp ) 2.8%
+  Contigs 100K--250K: 268 ( 41,399,963 bp ) 1.4%
+  Contigs 10K--100K: 1113 ( 42,741,040 bp ) 1.5%
+  Contigs 5K--10K: 0 ( 0 bp ) 0%
+  Contigs 2K--5K: 0 ( 0 bp ) 0%
+  Contigs 0--2K: 0 ( 0 bp ) 0%
   ```
